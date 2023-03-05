@@ -1,0 +1,12 @@
+sequenceDiagram
+	participant browser
+	participant server
+
+	browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+	activate server
+	server-->>browser: Nothing, but saves new note
+	deactivate server
+
+	Note: The browser sends a JSON format new note with a payload of - {"content":"This is a test", "date":"2023-03-05T15:57:16.785Z"}.
+		The browser creates a local new note and appends it to its local copy of the notes, then calls its redrawNotes function to redraw
+		the notes on the screen.
