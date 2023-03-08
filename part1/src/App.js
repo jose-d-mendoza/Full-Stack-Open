@@ -2,7 +2,8 @@
 
 import React from "react"
 
-/* after compilation (handled by Babel): */
+/***** JSX Section *****/
+/* after compilation (handled by Babel):
 const App = () => {
   const now = new Date()
   const a = 10
@@ -18,7 +19,9 @@ const App = () => {
     )
   )
 }
+*/
 
+/***** Component Section *****/
 /* render dynamic content
 const App = () => {
   const now = new Date()
