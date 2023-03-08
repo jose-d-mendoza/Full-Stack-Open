@@ -2,6 +2,24 @@
 
 import React from "react"
 
+/***** Multiple Components Section *****/
+const Hello = () => {
+  return (
+    <div>
+      <p>Hello world</p>
+    </div>
+  )
+}
+
+const App = () => {
+  return (
+    <div>
+      <h1>Greetings</h1>
+      <Hello/>
+    </div>
+  )
+}
+
 /***** JSX Section *****/
 /* after compilation (handled by Babel):
 const App = () => {
