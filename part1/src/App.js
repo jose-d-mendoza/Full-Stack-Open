@@ -1,9 +1,54 @@
 // full stack open
 
 import React from "react"
+import { renderIntoDocument } from "react-dom/test-utils"
+
+/***** Do Not Render Objects Section *****/
+/* Render an array */
+const App = () => {
+  const friends = [ "Peter", "Maya" ]
+
+  return (
+    <div>
+      <p>{friends}</p>
+    </div>
+  )
+}
+
+/* Render objects fix
+const App = () => {
+  const friends = [
+    { name: "Peter", age: 16 },
+    { name: "Maya", age: 20 },
+  ]
+
+  return (
+    <div>
+      <p>{friends[0].name} {friends[0].age}</p>
+      <p>{friends[1].name} {friends[1].age}</p>
+    </div>
+  )
+}
+*/
+
+/* Render objects error
+const App = () => {
+  const friends = [
+    { name: "Peter", age: 16 },
+    { name: "Maya", age: 20 },
+  ]
+
+  return (
+    <div>
+      <p>{friends[0]}</p>
+      <p>{friends[1]}</p>
+    </div>
+  )
+}
+*/
 
 /***** Props: Passing Data to Components Section *****/
-/* Hello with 2 props */
+/* Hello with 2 props 
 const Hello = (props) => {
   console.log(props)
   return (
@@ -27,6 +72,7 @@ const App = () => {
     </div>
   )
 }
+*/
 
 /* passing hardcoded values
 const Hello = (props) => {
