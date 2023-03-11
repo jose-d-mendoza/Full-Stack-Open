@@ -1,172 +1,78 @@
-// full stack open
-
-import React from "react"
-import { renderIntoDocument } from "react-dom/test-utils"
-
-/***** Do Not Render Objects Section *****/
-/* Render an array */
-const App = () => {
-  const friends = [ "Peter", "Maya" ]
-
+// part 1.1 & part 1.2
+const Header = (props) => {
+  console.log("Header:", props)
+  
   return (
     <div>
-      <p>{friends}</p>
+      <h1>
+        {props.course}
+      </h1>
     </div>
   )
 }
 
-/* Render objects fix
-const App = () => {
-  const friends = [
-    { name: "Peter", age: 16 },
-    { name: "Maya", age: 20 },
-  ]
+const Content = (props) => {
+  console.log("Content:", props)
 
   return (
     <div>
-      <p>{friends[0].name} {friends[0].age}</p>
-      <p>{friends[1].name} {friends[1].age}</p>
+      <Part part={props.part1} exercise={props.exercise1}/>
+      <Part part={props.part2} exercise={props.exercise2}/>
+      <Part part={props.part3} exercise={props.exercise3}/>
     </div>
   )
 }
-*/
 
-/* Render objects error
-const App = () => {
-  const friends = [
-    { name: "Peter", age: 16 },
-    { name: "Maya", age: 20 },
-  ]
+const Total = (props) => {
+  console.log("Total:", props)
 
-  return (
-    <div>
-      <p>{friends[0]}</p>
-      <p>{friends[1]}</p>
-    </div>
-  )
-}
-*/
-
-/***** Props: Passing Data to Components Section *****/
-/* Hello with 2 props 
-const Hello = (props) => {
-  console.log(props)
   return (
     <div>
       <p>
-        Hello {props.name}, you are {props.age} years old
+        Number of exercises {props.total}
+      </p>
+    </div>
+  )
+}
+
+const Part = (props) => {
+  console.log("Part:", props)
+
+  return (
+    <div>
+      <p>
+        {props.part} {props.exercise}
       </p>
     </div>
   )
 }
 
 const App = () => {
-  const name = "Jose"
-  const age = 26
+  const course = "Half Stack application development"
+  const parts = [
+    { course_part: "Fundamentals of React", exercise: 10 },
+    { course_part: "Using props to pass data", exercise: 7 },
+    { course_part: "State of a component", exercise: 14 },
+  ]
 
   return (
     <div>
-      <h1>Greetings</h1>
-      <Hello name="Gloria" age={10 + 16}/>
-      <Hello name={name} age={age}/>
+      <Header course={course}/>
+      
+      {/*parts.map((part) => <Content part={part.course_part} exercise={part.exercise}/>) <-- gives warning in red*/}
+      {/* part 1.1
+      <Content part={parts[0].course_part} exercise={parts[0].exercise}/>
+      <Content part={parts[1].course_part} exercise={parts[1].exercise}/>
+      <Content part={parts[2].course_part} exercise={parts[2].exercise}/>
+      */}
+      {/* part 1.2 */}
+      <Content part1={parts[0].course_part} exercise1={parts[0].exercise}
+        part2={parts[0].course_part} exercise2={parts[0].exercise}
+        part3={parts[0].course_part} exercise3={parts[0].exercise}/>
+
+      <Total total={parts[0].exercise + parts[1].exercise + parts[2].exercise}/>
     </div>
   )
 }
-*/
-
-/* passing hardcoded values
-const Hello = (props) => {
-  return (
-    <div>
-      <p>Hello {props.name}</p>
-    </div>
-  )
-}
-
-const App = () => {
-  return (
-    <div>
-      <h1>Greetings</h1>
-      <Hello name="Jose"/>
-      <Hello name="Gloria"/>
-    </div>
-  )
-}
-*/
-
-/***** Multiple Components Section *****/
-/* const Hello = () => {
-  return (
-    <div>
-      <p>Hello world</p>
-    </div>
-  )
-}
-
-const App = () => {
-  return (
-    <div>
-      <h1>Greetings</h1>
-      <Hello/>
-    </div>
-  )
-} */
-
-/***** JSX Section *****/
-/* after compilation (handled by Babel):
-const App = () => {
-  const now = new Date()
-  const a = 10
-  const b = 20
-  return React.createElement(
-    'div',
-    null,
-    React.createElement(
-      'p', null, "Hello world, it is ", now.toString()
-    ),
-    React.createElement(
-      'p', null, a, " plus ", b, " is ", a + b
-    )
-  )
-}
-*/
-
-/***** Component Section *****/
-/* render dynamic content
-const App = () => {
-  const now = new Date()
-  const a = 10
-  const b = 20
-  console.log(now, a + b)
-
-  return (
-    <div>
-      <p>Hello world, it is {now.toString()}</p>
-      <p>
-        {a} plus {b} is {a + b}
-      </p>
-    </div>
-  )
-}
-*/
-
-/* console output
-const App = () => {
-  console.log("Hello from component")
-  return (
-    <div>
-      <p>Hello World</p>
-    </div>
-  )
-}
-*/
-
-/* simple
-const App = () => (
-  <div>
-    <p>Hello World</p>
-  </div>
-)
-*/
 
 export default App
