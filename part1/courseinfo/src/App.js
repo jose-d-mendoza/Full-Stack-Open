@@ -21,6 +21,13 @@ const Content = (props) => {
       <Part part={props.part3} exercise={props.exercise3}/>
     </div>
   )
+    /* part 1.1}
+    <div>
+      <p>
+        <part={props.part} exercise={props.exercise}/>
+      </p>
+    </div>
+    */
 }
 
 const Total = (props) => {
@@ -39,11 +46,11 @@ const Part = (props) => {
   console.log("Part:", props)
 
   return (
-    <div>
+    <>
       <p>
         {props.part} {props.exercise}
       </p>
-    </div>
+    </>
   )
 }
 
@@ -58,7 +65,7 @@ const App = () => {
   return (
     <div>
       <Header course={course}/>
-      
+
       {/*parts.map((part) => <Content part={part.course_part} exercise={part.exercise}/>) <-- gives warning in red*/}
       {/* part 1.1
       <Content part={parts[0].course_part} exercise={parts[0].exercise}/>
