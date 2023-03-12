@@ -92,4 +92,42 @@ console.log(object1[fieldName]) // 35
 object1.address = "Helsinki"
 object1["secret number"] = 12341
 
+/******* Functions Section *******/
+console.log()
+console.log("******* Functions Section *******")
 
+// arrow functions
+console.log()
+console.log("--- arrow functions ---")
+const sum = (p1, p2) => {
+    console.log(p1)
+    console.log(p2)
+    return p1 + p2
+}
+
+const result = sum(1, 5)
+console.log(result) // 6
+
+const square = p => p * p
+
+const arr = [1, 2, 3]
+const arrSquared = t.map(p => p * p) // [1, 4, 9]
+
+// function declaration
+console.log()
+console.log("--- function  declaration ---")
+function product(a, b) {
+    return a * b
+}
+
+const prod = product(2, 6) // prod = 12
+
+// function expression
+console.log()
+console.log("--- function  expression ---")
+
+const average = function(a, b) {
+    return (a + b) / 2
+}
+
+const ave = average(2, 5) // ave = 3.5
