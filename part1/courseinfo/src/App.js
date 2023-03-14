@@ -1,4 +1,3 @@
-// part 1.1 & part 1.2
 const Header = (props) => {
   console.log("Header:", props)
   
@@ -21,13 +20,6 @@ const Content = (props) => {
       <Part part={props.part3} exercise={props.exercise3}/>
     </div>
   )
-    /* part 1.1}
-    <div>
-      <p>
-        <part={props.part} exercise={props.exercise}/>
-      </p>
-    </div>
-    */
 }
 
 const Total = (props) => {
@@ -56,28 +48,31 @@ const Part = (props) => {
 
 const App = () => {
   const course = "Half Stack application development"
-  const parts = [
-    { course_part: "Fundamentals of React", exercise: 10 },
-    { course_part: "Using props to pass data", exercise: 7 },
-    { course_part: "State of a component", exercise: 14 },
-  ]
+  const part1 = {
+    name: "Fundamentals of React",
+    exercises: 10
+  }
+
+  const part2 = {
+    name: "Using props to pass data",
+    exercises: 7
+  }
+
+  const part3 = {
+    name: "State of a component",
+    exercises: 14
+  }
 
   return (
     <div>
       <Header course={course}/>
 
       {/*parts.map((part) => <Content part={part.course_part} exercise={part.exercise}/>) <-- gives warning in red*/}
-      {/* part 1.1
-      <Content part={parts[0].course_part} exercise={parts[0].exercise}/>
-      <Content part={parts[1].course_part} exercise={parts[1].exercise}/>
-      <Content part={parts[2].course_part} exercise={parts[2].exercise}/>
-      */}
-      {/* part 1.2 */}
-      <Content part1={parts[0].course_part} exercise1={parts[0].exercise}
-        part2={parts[0].course_part} exercise2={parts[0].exercise}
-        part3={parts[0].course_part} exercise3={parts[0].exercise}/>
+      <Content part1={part1.name} exercise1={part1.exercises}
+        part2={part2.name} exercise2={part2.exercises}
+        part3={part3.name} exercise3={part3.exercises}/>
 
-      <Total total={parts[0].exercise + parts[1].exercise + parts[2].exercise}/>
+      <Total total={part1.exercises + part2.exercises + part3.exercises}/>
     </div>
   )
 }
