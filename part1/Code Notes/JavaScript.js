@@ -121,6 +121,7 @@ function product(a, b) {
 }
 
 const prod = product(2, 6) // prod = 12
+console.log(prod)
 
 // function expression
 console.log()
@@ -131,3 +132,45 @@ const average = function(a, b) {
 }
 
 const ave = average(2, 5) // ave = 3.5
+console.log(ave)
+
+/******* Object Methods and "this" Section *******/
+console.log()
+console.log("******* Object Methods and 'this' Section *******")
+
+// creating function for object
+const arto = {
+    name: "Arto Hellas",
+    age: 35,
+    education: "PhD",
+    greet: function() {
+        console.log("Hello, my name is " + this.name)
+    },
+    doAddition: function(a, b) {
+        console.log(a + b)
+    },
+}
+
+arto.greet() // Hello, my name is Arto Hellas
+
+// assigning function to object
+arto.growOlder = function() {
+    this.age += 1
+}
+
+console.log(arto.age) // 35
+arto.growOlder()
+console.log(arto.age) // 36
+
+// calling method through variable
+arto.doAddition(1, 4) // 5
+
+const referenceToAddition = arto.doAddition
+referenceToAddition(10, 15) // 25
+
+const referenceToGreet = arto.greet
+referenceToGreet() // Hello my name is undefined
+
+setTimeout(arto.greet.bind(arto), 1000) // Hello my name is Arto Hellas
+
+
