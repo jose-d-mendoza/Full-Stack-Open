@@ -1,8 +1,19 @@
 import React from "react"
 import { renderIntoDocument } from "react-dom/test-utils"
 
-/***** Component state, event handlers *****/
+/***** Page Re-Rendering *****/
 
+const App = (props) => {
+  const {counter} = props
+  return (
+    <div>{counter}</div>
+  )
+}
+
+export default App
+
+/***** Component State, Event Handlers *****/
+/*
 const Hello = ({name, age}) => {
   const bornYear = () => new Date().getFullYear() - age
 
@@ -28,3 +39,4 @@ const App = () => {
 }
 
 export default App
+*/
