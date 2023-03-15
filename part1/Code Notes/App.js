@@ -1,4 +1,4 @@
-// full stack open
+// Introduction to React
 
 import React from "react"
 import { renderIntoDocument } from "react-dom/test-utils"
