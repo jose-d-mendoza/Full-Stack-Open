@@ -7,5 +7,16 @@ import App from "./App"
 /***** Page Re-Rendering *****/
 let counter = 1
 
-ReactDOM.createRoot(document.getElementById("root")).render(<App counter={counter}/>)
+const refresh = () => {
+    ReactDOM.createRoot(document.getElementById("root")).render(
+        <App counter={counter}/>
+    )
+}
 //ReactDOM.createRoot(document.getElementById("root")).render(<App/>)
+
+setInterval(() => {
+    refresh()
+    counter += 1
+}, 1000)
+
+
