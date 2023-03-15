@@ -173,4 +173,24 @@ referenceToGreet() // Hello my name is undefined
 
 setTimeout(arto.greet.bind(arto), 1000) // Hello my name is Arto Hellas
 
+/******* Classes Section *******/
+console.log()
+console.log("******* Classes Section *******")
+
+class Person {
+    constructor(name, age) {
+        this.name = name
+        this.age = age
+    }
+    greet() {
+        console.log("Hello, my name is " + this.name)
+    }
+}
+
+const adam = new Person("Adam Ondra", 29)
+adam.greet() // Hello, my name is Adam Ondra
+
+const janja = new Person("Janja Garnbret", 23)
+janja.greet() // Hello, my name is Janja Garnbret
+
 
