@@ -3,12 +3,13 @@ import { renderIntoDocument } from "react-dom/test-utils"
 
 /***** Component state, event handlers *****/
 
-const Hello = (props) => {
+const Hello = ({name, age}) => {
+  const bornYear = () => new Date().getFullYear() - age
+
   return (
     <div>
-      <p>
-        Hello {props.name}, you are {props.age} years old
-      </p>
+      <p>Hello {name}, you are {age} years old</p>
+      <p>So you were probably born in {bornYear()}</p>
     </div>
   )
 }
