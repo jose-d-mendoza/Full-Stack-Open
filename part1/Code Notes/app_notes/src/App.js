@@ -3,7 +3,8 @@ import { renderIntoDocument } from "react-dom/test-utils"
 
 /***** Event Handling & 
  * An Event Handler is a Function & 
- * Passing State - To Child Components *****/
+ * Passing State - To Child Components &
+ * Refactoring the Components *****/
 
 import { useState } from "react" // imports useState function
 
@@ -36,19 +37,9 @@ const App = () => {
   )
 }
 
-const Display = (props) => {
-  return (
-    <div>{props.counter}</div>
-  )
-}
+const Display = ({counter}) => <div>{counter}</div>
 
-const Button = (props) => {
-  return (
-    <button onClick={props.handleClick}>
-      {props.text}
-    </button>
-  )
-}
+const Button =({handleClick, text}) => <button onClick={handleClick}>{text}</button>
 
 export default App
 
