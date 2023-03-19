@@ -9,10 +9,22 @@ import { useState } from "react" // imports useState function
 
 const App = () => {
   const [ counter, setCounter ] = useState(0)
+  console.log("Rendering with counter value", counter)
 
-const increaseByOne = () => setCounter(counter + 1)
-const decreaseByOne = () => setCounter(counter - 1)
-const setToZero = () => setCounter(0)
+  const increaseByOne = () => {
+    console.log("Increasing, value before:", counter)
+    setCounter(counter + 1)
+  }
+
+  const decreaseByOne = () => { 
+    console.log("Decreasing, value before:", counter)
+    setCounter(counter - 1)
+  }
+
+  const setToZero = () => {
+    console.log("Resetting to zero, value before:", counter)
+    setCounter(0)
+  }
 
   return (
     <div>
