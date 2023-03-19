@@ -4,7 +4,11 @@ import ReactDOM from "react-dom/client";
 
 import App from "./App"
 
-/***** Page Re-Rendering *****/
+/***** Stateful Component *****/
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>)
+
+/***** Page Re-Rendering *****
 let counter = 1
 
 const refresh = () => {
@@ -18,5 +22,4 @@ setInterval(() => {
     refresh()
     counter += 1
 }, 1000)
-
-
+*/

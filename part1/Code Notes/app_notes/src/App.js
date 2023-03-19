@@ -1,7 +1,28 @@
 import React from "react"
 import { renderIntoDocument } from "react-dom/test-utils"
 
-/***** Page Re-Rendering *****/
+/***** Stateful Component *****/
+
+import { useState } from "react" // imports useState function
+
+const App = () => {
+  const [ counter, setCounter ] = useState(0)
+
+  setTimeout(
+    () => setCounter(counter + 1),
+    1000
+  )
+
+  console.log("rendering...", counter)
+
+  return (
+    <div>{counter}</div>
+  )
+}
+
+export default App
+
+/***** Page Re-Rendering *****
 
 const App = (props) => {
   const {counter} = props
@@ -11,6 +32,7 @@ const App = (props) => {
 }
 
 export default App
+*/
 
 /***** Component State, Event Handlers *****/
 /*
