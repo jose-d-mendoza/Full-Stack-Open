@@ -1,7 +1,29 @@
 import React from "react"
 import { renderIntoDocument } from "react-dom/test-utils"
 
-/***** Stateful Component *****/
+/***** Event Handling *****/
+
+import { useState } from "react" // imports useState function
+
+const App = () => {
+  const [ counter, setCounter ] = useState(0)
+
+  return (
+    <div>
+      <div>{counter}</div>
+      <button onClick={() => setCounter(counter + 1)}>
+        Plus
+      </button>
+      <button onClick={() => setCounter(0)}>
+        Reset
+      </button>
+    </div>
+  )
+}
+
+export default App
+
+/***** Stateful Component *****
 
 import { useState } from "react" // imports useState function
 
@@ -21,6 +43,7 @@ const App = () => {
 }
 
 export default App
+*/
 
 /***** Page Re-Rendering *****
 
