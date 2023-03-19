@@ -4,8 +4,6 @@ import { renderIntoDocument } from "react-dom/test-utils"
 /***** Complext State *****/
 
 import { useState } from "react" // imports useState function
-import { setSelectionRange } from "@testing-library/user-event/dist/utils"
-import { click } from "@testing-library/user-event/dist/click"
 
 const App = () => {
   const [clicks, setClicks] = useState({
