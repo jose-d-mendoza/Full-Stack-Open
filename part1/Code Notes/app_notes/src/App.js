@@ -1,20 +1,25 @@
 import React from "react"
 import { renderIntoDocument } from "react-dom/test-utils"
 
-/***** Event Handling *****/
+/***** Event Handling & 
+ * An Event Handler is a Function & 
+ * Passing State - To Child Components *****/
 
 import { useState } from "react" // imports useState function
 
 const App = () => {
   const [ counter, setCounter ] = useState(0)
 
+const increaseByOne = () => setCounter(counter + 1)
+const setToZero = () => setCounter(0)
+
   return (
     <div>
       <div>{counter}</div>
-      <button onClick={() => setCounter(counter + 1)}>
+      <button onClick={increaseByOne}>
         Plus
       </button>
-      <button onClick={() => setCounter(0)}>
+      <button onClick={setToZero}>
         Reset
       </button>
     </div>
