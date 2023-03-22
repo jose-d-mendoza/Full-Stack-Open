@@ -3,9 +3,66 @@ import { renderIntoDocument } from "react-dom/test-utils"
 
 import { useState } from "react" // imports useState function
 
+/***** A Function that Returns a Function *****/
+
+const App = () => {
+  const [value, setValue] = useState(10)
+
+  const setToValue = (newValue) => {
+    console.log("value now", newValue)
+    setValue(newValue)
+  }
+
+  return (
+    <div>
+      {value}
+      <button onClick={() => setToValue(1000)}>Thousand</button>
+      <button onClick={() => setToValue(0)}>Reset</button>
+      <button onClick={() => setToValue(value + 1)}>Increment</button>
+    </div>
+  )
+}
+
+/* returning function to change value -> setValue(newValue)
+const App = () => {
+  const [value, setValue] = useState(10)
+
+  const setToValue = (newValue) => () => {
+    console.log("value now", newValue) // print the new value to console
+    setValue(newValue)
+  }
+
+  return (
+    <div>
+      {value}
+      <button onClick={setToValue(1000)}>Thousand</button>
+      <button onClick={setToValue(0)}>Reset</button>
+      <button onClick={setToValue(value + 1)}>Increment</button>
+    </div>
+  )
+}
+*/
+
+/* returning function to output
+const App = () => {
+  const [value, setValue] = useState(10)
+
+  const hello = (who) => () => { console.log("Hello", who) }
+
+  return (
+    <div>
+      {value}
+      <button onClick={hello("world")}>button</button>
+      <button onClick={hello("react")}>button</button>
+      <button onClick={hello("function")}>button</button>
+    </div>
+  )
+}
+*/
+
 /***** Handling Arrays &
  * Update of the State is Asynchronous 
- * Conditional Rendering *****/
+ * Conditional Rendering *****
 
 const History = (props) => {
   if (props.allClicks.length === 0) {
@@ -54,6 +111,7 @@ const App = () => {
     </div>  
   )
 }
+*/
 
 /***** Complext State *****
 
