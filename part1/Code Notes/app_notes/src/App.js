@@ -4,11 +4,15 @@ import { renderIntoDocument } from "react-dom/test-utils"
 import { useState } from "react" // imports useState function
 
 /***** A Function that Returns a Function &
- * Passing event hanlders to child components *****/
+ * Passing event hanlders to child components &
+ * Do not define components within components *****/
 
+// This is the right place to define a component
 const Button = (props) => (
   <button onClick={props.HandleClick}>{props.text}</button>
 )
+
+const Display = props => <div>{props.value}</div>
 
 const App = () => {
   const [value, setValue] = useState(10)
@@ -20,7 +24,7 @@ const App = () => {
 
   return (
     <div>
-      {value}
+      <Display value={value}/>
       <Button HandleClick={() => setToValue(1000)} text="Thousand"/>
       <Button HandleClick={() => setToValue(0)} text="Reset"/>
       <Button HandleClick={() => setToValue(value + 1)} text="Increment"/>
