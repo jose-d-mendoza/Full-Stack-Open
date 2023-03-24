@@ -1,5 +1,9 @@
 import { useState } from "react"
 
+const Button = ({handler, text}) => <button onClick={handler}>{text}</button>
+
+const Most = ({anecdote, votes}) => <p>{anecdote} <br/> has {votes} votes</p>
+
 const App = () => {
   const anecdotes = [
     'If it hurts, do it more often.',
@@ -14,24 +18,35 @@ const App = () => {
 
   const [selected, setSelected] = useState(0)
   const [points, setPoints] = useState(new Array(anecdotes.length).fill(0))
+  const [top, setTop] = useState(0)
   
   const getRandom = () => {
-    const newSelected = Math.floor(Math.random() * anecdotes.length)
-    setSelected(newSelected)
+    const nSelected = Math.floor(Math.random() * anecdotes.length)
+    setSelected(nSelected)
   }
 
   const incPoint = () => {
     const nPoints = {...points}
     nPoints[selected] += 1
+
+    if(nPoints[top] < nPoints[selected]) {
+      setTop(selected)
+    }
+
     setPoints(nPoints)
   }
 
   return (
     <div>
-      <p>{anecdotes[selected]}</p>
-      <p>has {points[selected]} votes</p>
-      <button onClick={() => getRandom()}>Next Anecdote</button>
-      <button onClick={() => incPoint()}>Vote</button>
+      <h1>Anecdote of the day</h1>
+      <p>
+        {anecdotes[selected]} <br/>
+        has {points[selected]} votes
+      </p>
+      <Button handler={() => getRandom()} text="Next Anecdote"/>
+      <Button handler={() => incPoint()} text="Vote"/>
+      <h1>Anecdote with most votes</h1>
+      <Most anecdote={anecdotes[top]} votes={points[top]}/>
     </div>
   )
 }
