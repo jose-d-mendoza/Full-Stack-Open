@@ -6,18 +6,28 @@ const Statistics = (props) => {
   const bad = props.sBad
   const total = props.sTotal
 
-  return (
-    <div>
-      <h1>Statistics</h1>
-      <p>
-        Good: {good} <br/>
-        Neutral: {neutral} <br/>
-        Bad: {bad} <br/>
-        Average: {(total - neutral - (bad * 2)) / total} <br/>
-        Positive: {(good / total) * 100}%
-      </p>
-    </div>
-  )
+  if(total > 0) {
+    return (
+      <div>
+        <h1>Statistics</h1>
+        <p>
+          Good: {good} <br/>
+          Neutral: {neutral} <br/>
+          Bad: {bad} <br/>
+          Average: {(total - neutral - (bad * 2)) / total} <br/>
+          Positive: {(good / total) * 100}%
+        </p>
+      </div>
+    )
+  }
+  else {
+    return (
+      <div>
+        <h1>Statistics</h1>
+        <p>No feedback given</p>
+      </div>
+    )
+  }
 }
 
 function App() {
