@@ -1,17 +1,29 @@
 import { useState } from "react"
 
-const StatisticLine = ({text, value}) => <p>{text} {value}</p>
+const StatisticLine = ({text, value}) => {
+  return (
+  <tr>
+    <td>{text}</td>
+    <td>{value}</td>
+  </tr>
+  )
+}
 
 const Statistics = ({sGood, sNeutral, sBad, sTotal}) => {
   if(sTotal > 0) {
     return (
       <div>
         <h1>Statistics</h1>
-        <StatisticLine text="Good:" value={sGood}/>
-        <StatisticLine text="Neutral:" value={sNeutral}/>
-        <StatisticLine text="Bad:" value={sBad}/>
-        <StatisticLine text="Average:" value={sTotal - sNeutral - (sBad * 2) / sTotal}/>
-        <StatisticLine text="Positive:" value={((sGood / sTotal) * 100) + "%"}/>
+        <table>
+          <tbody>
+            <StatisticLine text="Good:" value={sGood}/>
+            <StatisticLine text="Neutral:" value={sNeutral}/>
+            <StatisticLine text="Bad:" value={sBad}/>
+            <StatisticLine text="Total:" value={sTotal}/>
+            <StatisticLine text="Average:" value={(sTotal - sNeutral - (sBad * 2)) / sTotal}/>
+            <StatisticLine text="Positive:" value={((sGood / sTotal) * 100) + "%"}/>
+          </tbody>
+        </table>
       </div>
     )
   }
@@ -27,7 +39,7 @@ const Statistics = ({sGood, sNeutral, sBad, sTotal}) => {
 
 const Button = ({handler, text}) => <button onClick={handler}>{text}</button>
 
-function App() {
+const App = () => {
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
