@@ -1,3 +1,6 @@
+/****** Renering Collections &
+ * Key-Attribute ******/
+
 const App = (props) => {
   const {notes} = props
 
@@ -6,7 +9,7 @@ const App = (props) => {
       <h1>Notes</h1>
       <ul>
         {notes.map(note =>
-          <li>
+          <li key={note.id}>
             {note.content}
           </li>
         )}
