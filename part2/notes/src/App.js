@@ -1,5 +1,6 @@
 /****** Renering Collections &
- * Key-Attribute ******/
+ * Key-Attribute &
+ * Map ******/
 
 const App = (props) => {
   const {notes} = props
