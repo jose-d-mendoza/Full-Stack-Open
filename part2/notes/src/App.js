@@ -1,6 +1,7 @@
 /****** Renering Collections &
  * Key-Attribute &
- * Map ******/
+ * Map &
+ * Anti-Pattern: Array Indexes as Keys ******/
 
 const App = (props) => {
   const {notes} = props
@@ -9,7 +10,9 @@ const App = (props) => {
     <div>
       <h1>Notes</h1>
       <ul>
-        {notes.map(note =>
+        {/*notes.map((note, i) => NOT RECOMMENDED!!!
+          <li key={i}> */
+         notes.map(note =>
           <li key={note.id}>
             {note.content}
           </li>
