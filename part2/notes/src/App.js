@@ -1,28 +1,65 @@
-/****** Renering Collections &
- * Key-Attribute &
- * Map &
- * Anti-Pattern: Array Indexes as Keys &
- * Refactoring Modules ******/
+const Header = ({name}) => <h1>{name}</h1>
 
-import Note from "./components/Note"
-
-/* const Note = ({note}) => {
-  return (
-    <li>{note.content}</li>
-  )
-} */
-
-const App = ({notes}) => {
+const Content = ({parts}) => {
   return (
     <div>
-      <h1>Notes</h1>
-      <ul>
-        {/*notes.map((note, i) => NOT RECOMMENDED!!!
-          <li key={i}> */}
-        {notes.map(note =>
-          <Note key={note.id} note={note}/>
-        )}
-      </ul>
+      {parts.map(part =>
+        <Part key={part.id} part={part.name} exercise={part.exercises}/>
+      )}
+    </div>
+  )
+}
+
+const Part = ({part, exercise}) => <p>{part} {exercise}</p>
+
+const Total = ({parts}) => {
+  let total = 0
+  parts.map(part => total = total + part.exercises)
+
+  return (
+    <div>
+      <p>
+        Number of exercises {total}
+      </p>
+    </div>
+  )
+}
+
+const Course = ({course}) => {
+  return (
+    <div>
+      <Header name={course.name}/>
+      <Content parts={course.parts}/>
+    </div>
+  )
+}
+
+const App = () => {
+  const course = {
+    name: "Half Stack application development",
+    parts: [
+      {
+        name: "Fundamentals of React",
+        exercises: 10,
+        id: 1
+      },
+      {
+        name: "Using props to pass data",
+        exercises: 7,
+        id: 2
+      },
+      {
+        name: "State of a component",
+        exercises: 14,
+        id: 3
+      }
+    ]
+  }
+
+  return (
+    <div>
+      <Course course={course}/>
+      <Total parts={course.parts}/>
     </div>
   )
 }
