@@ -19,7 +19,7 @@ const Total = ({parts}) => {
   return (
     <div>
       <p>
-        Number of exercises {total}
+        <b>Total of {total} exercises</b>
       </p>
     </div>
   )
@@ -52,6 +52,11 @@ const App = () => {
         name: "State of a component",
         exercises: 14,
         id: 3
+      },
+      {
+        name: "Redux",
+        exercises: 11,
+        id: 4
       }
     ]
   }
