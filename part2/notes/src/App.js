@@ -13,8 +13,7 @@ const Content = ({parts}) => {
 const Part = ({part, exercise}) => <p>{part} {exercise}</p>
 
 const Total = ({parts}) => {
-  let total = 0
-  parts.map(part => total = total + part.exercises)
+  const total = parts.reduce((s, p) =>  s + p.exercises, 0)
 
   return (
     <div>
