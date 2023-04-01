@@ -1,71 +1,45 @@
-/*
- * a - Rendering a Collection, Modules: 
- * Renering Collections &
- * Key-Attribute &
- * Map &
- * Anti-Pattern: Array Indexes as Keys &
- * Refactoring Modules
- * 
- * b - Forms:
- * Controlled Component
-*/
-
 import { useState } from "react"
-import Note from "./components/Note"
 
-/* const Note = ({note}) => {
-  return (
-    <li>{note.content}</li>
-  )
-} */
+const App = () => {
+  const [persons, setPersons] = useState([
+    {name: "Arto Hellas"}
+  ])
+  const [newName, setNewName] = useState("")
 
-const App = (props) => {
-  const [notes, setNotes] = useState(props.notes)
-  const [newNote, setNewNote] = useState("")
-  const [showAll, setShowAll] = useState(true)
+  const addName = (event) => {
+    event.preventDefault() // prevent default action of submitting HTML forms
 
-  const addNote = (event) => {
-    event.preventDefault()
-
-    const noteObject = {
-      content: newNote,
-      important: Math.random() < 0.5,
-      id: notes.length + 1
+    // create object with new value
+    const nameObject = {
+      name: newName
     }
 
-    setNotes(notes.concat(noteObject))
-    setNewNote("")
+    setPersons(persons.concat(nameObject)) // concat returns new array
+    setNewName("") // clear newName
   }
 
-  const handleNoteChange = (event) => setNewNote(event.target.value)
-
-  const notesToShow = showAll ? notes : notes.filter(note => note.important)
+  // handle the text change in input
+  const handleNameChange = (event) => setNewName(event.target.value)
 
   return (
     <div>
-      <h1>Notes</h1>
-      <div>
-        <button onClick={() => setShowAll(!showAll)}>
-          show {showAll ? "important" : "all"}
-        </button>
-      </div>
-      <ul>
-        {/*notes.map((note, i) => NOT RECOMMENDED!!!
-          <li key={i}> */}
-        {/*notes.map(note =>
-          <Note key={note.id} note={note}/>
-        )*/}
-        {notesToShow.map(note =>
-          <Note key={note.id} note={note}/>
-        )}
-      </ul>
-      <form onSubmit={addNote}>
-        <input 
-          value={newNote}
-          onChange={handleNoteChange}
-        />
-        <button type="submit">Save</button>
+      <h2>Phonebook</h2>
+      <form onSubmit={addName}>
+        <div>
+          Name: <input value={newName} onChange={handleNameChange}/>
+        </div>
+        <div>
+          <button type="submit">Add</button>
+        </div>
       </form>
+      <h2>Numbers</h2>
+      <div>
+        <ul>
+          {persons.map(person => 
+            <li key={person.name}>{person.name}</li>
+          )}
+        </ul>
+      </div>
     </div>
   )
 }
