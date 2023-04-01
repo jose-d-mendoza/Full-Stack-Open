@@ -9,12 +9,18 @@ const App = () => {
   const addName = (event) => {
     event.preventDefault() // prevent default action of submitting HTML forms
 
-    // create object with new value
-    const nameObject = {
-      name: newName
+    if(persons.find(person => person.name === newName)) {
+      alert(newName + " is already added to phonebook")
+    }
+    else {
+      // create object with new value
+      const nameObject = {
+        name: newName
+      }
+
+      setPersons(persons.concat(nameObject)) // concat returns new array
     }
 
-    setPersons(persons.concat(nameObject)) // concat returns new array
     setNewName("") // clear newName
   }
 
