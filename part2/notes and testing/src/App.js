@@ -3,7 +3,10 @@ import { useState } from "react"
 const App = () => {
   // Persons
   const [persons, setPersons] = useState([
-    {name: "Arto Hellas", number: "040-1234567"}
+    {name: "Arto Hellas", number: "040-1234567"},
+    {name: "Ada Lovelace", number: "39-44-5323523"},
+    {name: "Dan Abramov", number: "12-43-234345"},
+    {name: "Mary Poppendieck", number: "39-23-6423122"}
   ])
 
   // add new name and number
@@ -35,9 +38,19 @@ const App = () => {
   // handle the value changing while typing
   const handlePhoneChange = (event) => setNewPhone(event.target.value)
 
+  const [search, setSearch] = useState("")
+  // name search
+  const handleNameSearch = (event) => setSearch(event.target.value)
+
+  const namesToShow = search === "" ? persons : persons.filter(person => (person.name.toUpperCase().includes(search.toUpperCase())))
+
   return (
     <div>
       <h2>Phonebook</h2>
+      <div>
+        Filter shown with:<input value={search} onChange={handleNameSearch}/>
+      </div>
+      <h2>Add a New Person</h2>
       <form onSubmit={addName}>
         <div>
           Name: <input value={newName} onChange={handleNameChange}/>
@@ -52,8 +65,11 @@ const App = () => {
       <h2>Numbers</h2>
       <div>
         <ul>
-          {persons.map(person => 
+          {namesToShow.map(person => {
+            return (
             <li key={person.name}>{person.name} {person.number}</li>
+            )
+          }
           )}
         </ul>
       </div>
