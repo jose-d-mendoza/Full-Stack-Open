@@ -1,11 +1,12 @@
 import { useState } from "react"
 
 const App = () => {
+  // Persons
   const [persons, setPersons] = useState([
-    {name: "Arto Hellas"}
+    {name: "Arto Hellas", number: "040-1234567"}
   ])
-  const [newName, setNewName] = useState("")
 
+  // add new name and number
   const addName = (event) => {
     event.preventDefault() // prevent default action of submitting HTML forms
 
@@ -15,17 +16,24 @@ const App = () => {
     else {
       // create object with new value
       const nameObject = {
-        name: newName
+        name: newName,
+        number: newPhone
       }
 
       setPersons(persons.concat(nameObject)) // concat returns new array
     }
 
     setNewName("") // clear newName
+    setNewPhone("") // clear newPhone
   }
 
+  const [newName, setNewName] = useState("")
   // handle the text change in input
   const handleNameChange = (event) => setNewName(event.target.value)
+
+  const [newPhone, setNewPhone] = useState("")
+  // handle the value changing while typing
+  const handlePhoneChange = (event) => setNewPhone(event.target.value)
 
   return (
     <div>
@@ -35,6 +43,9 @@ const App = () => {
           Name: <input value={newName} onChange={handleNameChange}/>
         </div>
         <div>
+          Number: <input value={newPhone} onChange={handlePhoneChange}/>
+        </div>
+        <div>
           <button type="submit">Add</button>
         </div>
       </form>
@@ -42,7 +53,7 @@ const App = () => {
       <div>
         <ul>
           {persons.map(person => 
-            <li key={person.name}>{person.name}</li>
+            <li key={person.name}>{person.name} {person.number}</li>
           )}
         </ul>
       </div>
