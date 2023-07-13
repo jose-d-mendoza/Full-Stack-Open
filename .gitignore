@@ -1,4 +1,6 @@
 create-react-app/
+json-server/
+Tools/
 node_modules/
 public/
 package-lock.json
